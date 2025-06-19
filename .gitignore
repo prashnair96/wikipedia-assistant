@@ -5,3 +5,7 @@ __pycache__/
 .DS_Store
 *.log
 .env
+data/simplewiki-latest-categorylinks.sql
+data/simplewiki-latest-pages-articles.xml.bz2
+data/simplewiki-latest-page.sql
+page_categories.pkl
