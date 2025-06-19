@@ -1,0 +1,7 @@
+data/simplewiki-latest-page.sql filter=lfs diff=lfs merge=lfs -text
+page_categories.pkl filter=lfs diff=lfs merge=lfs -text
+data/simplewiki-latest-categorylinks.sql filter=lfs diff=lfs merge=lfs -text
+data/simplewiki-latest-pages-articles.xml.bz2 filter=lfs diff=lfs merge=lfs -text
+*.pkl filter=lfs diff=lfs merge=lfs -text
+*.sql filter=lfs diff=lfs merge=lfs -text
+*.bz2 filter=lfs diff=lfs merge=lfs -text
