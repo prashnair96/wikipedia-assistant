@@ -23,6 +23,15 @@ The entire application is deployed on a free cloud provider to facilitate ease o
 -   Cloud Deployment: Hosted on a free cloud platform ensuring availability and scalability.
 -   Open Source & Documentation: Complete codebase, preprocessing scripts, and documentation provided, including explanations for design choices and simplifications.
 
+# Links
+
+- [GitHub Repository](https://github.com/prashnair96/wikipedia-assistant)
+- [Deployed API URL](https://wikipedia-assistant.onrender.com)
+- [Postman Tests](https://app.getpostman.com/join-team?invite_code=db51400d1ff78ef6ffae929c25bd44816b8b3ed9966c0badc83e54571bad7c29&target_code=fce0bbea7b93945ee4e31e35eb885a46)
+
+
+Note: Downloaded data files (`simplewiki-latest-categorylinks.sql`, `simplewiki-latest-page.sql` and `simplewiki-latest-pages-articles.xml.bz2`),  were not able to be pushed to Github repo due to huge size. However the `setup.sh` wrapper script - which will covered in detail later on , always downloads the latest dumps, hence not an issue
+
 
 # Wikipedia Assistant — Local Development Environment Setup
 
@@ -713,7 +722,6 @@ In deploying this application, I chose **Render** as my cloud provider for sever
 
 ### Deployment in Render
 
-- **Deployment URL**: [https://wikipedia-assistant.onrender.com]
 - **Database**: PostgreSQL (hosted on Render)
 - **Environment Variables**: The application uses `DATABASE_URL` to connect to the PostgreSQL database
 
@@ -785,12 +793,6 @@ I have created a **Postman collection** that includes the following tests for th
 4. **Querying an Invalid Table**  
    - Verifies that querying a non-existent table - page instead of pages (e.g., `SELECT COUNT(*) FROM page`) triggers a **500 Internal Server Error** due to the lack of error handling for invalid queries.
    - Expected Response: `500 Internal Server Error`.
-
-### Postman Collection Link:
-
-You can import the Postman collection from this link:  
-https://app.getpostman.com/join-team?invite_code=db51400d1ff78ef6ffae929c25bd44816b8b3ed9966c0badc83e54571bad7c29&target_code=fce0bbea7b93945ee4e31e35eb885a46
-
 
 
 # Wikipedia Assistant - Future Improvements
