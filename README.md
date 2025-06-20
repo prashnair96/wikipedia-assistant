@@ -1,4 +1,4 @@
-# Wikipedia Assistan - Introduction & Overview
+# Wikipedia Assistant - Introduction & Overview
 
 This project implements a Wikipedia Assistant based on the Simple English Wikipedia dataset. It involves building a comprehensive database containing metadata about Wikipedia pages—including page titles, categories, last modification dates—and the intricate web of links between these pages. The core objective is to identify “outdated” pages within categories by comparing modification dates between pages and the pages they reference.
 
