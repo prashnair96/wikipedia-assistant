@@ -1,4 +1,4 @@
-# Introduction & Overview
+# Wikipedia Assistan - Introduction & Overview
 
 This project implements a Wikipedia Assistant based on the Simple English Wikipedia dataset. It involves building a comprehensive database containing metadata about Wikipedia pages—including page titles, categories, last modification dates—and the intricate web of links between these pages. The core objective is to identify “outdated” pages within categories by comparing modification dates between pages and the pages they reference.
 
@@ -8,7 +8,7 @@ The system exposes a RESTful API with two key endpoints: one allows execution of
 
 The entire application is deployed on a free cloud provider to facilitate ease of access and scalability. All code, preprocessing scripts, and documentation—including design decisions and simplifications—are openly shared to promote transparency and reproducibility.
 
-# Key Features
+## Key Features
 
 - Comprehensive Wikipedia Database: Stores page titles, categories, last modification dates, and detailed inter-page link data including link order on the referring page.
 - Outdated Page Detection: Identifies pages as outdated if any referenced page has a more recent modification date, calculating the maximum lag.
