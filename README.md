@@ -707,6 +707,90 @@ Makefile in root folder:
 - Maintainability: You can expand the Makefile later (e.g., make deploy).
 
 
+## Cloud Provider Decision: Render
+
+In deploying this application, I chose **Render** as my cloud provider for several reasons, but I also encountered tradeoffs and limitations with other platforms. 
+
+### Deployment in Render
+
+- **Deployment URL**: [https://wikipedia-assistant.onrender.com]
+- **Database**: PostgreSQL (hosted on Render)
+- **Environment Variables**: The application uses `DATABASE_URL` to connect to the PostgreSQL database
+
+
+### Summary of the considerations:
+
+#### Why I Chose Render:
+Render provided the best combination of ease-of-use, **fully managed PostgreSQL** database, and **automatic deployment** from GitHub. Render also offered a **free tier** for both **web services** and **PostgreSQL databases**, which was a great starting point for this project.
+
+- **Managed PostgreSQL**: Render's PostgreSQL setup is easy to configure and provides a **free database tier**, which suits my needs for a small-scale project.
+- **Automatic Deployment from GitHub**: Integration with GitHub was seamless, allowing me to automatically deploy updates whenever I push changes to my GitHub repository.
+- **Transparent Pricing**: Render offers clear pricing with predictable costs. When scaling the app, I will have an easy time understanding the expenses.
+
+#### Tradeoff with Cron Jobs:
+A key feature that I **sacrificed** due to **cost** is **scheduled cron jobs**. **Render’s free tier** does not support cron jobs, and implementing them requires **additional payment**. Since I did not want to incur these extra costs for a small project, cron jobs for scheduled tasks are not available in my current setup.
+
+#### Why Not Other Cloud Providers?
+
+1. **Heroku**:
+   - Initially, I considered **Heroku**, which is well-known for ease of use and its free tier, but I was unable to access the **free PostgreSQL tier** on Heroku. They only offered limited plans or required payment for a managed database, which didn’t fit the budget for this project.
+
+2. **Railway**:
+   - **Railway** provided a great experience with easy setup, but their **free tier** was limited to deploying only **databases**, and I couldn’t use their **web hosting** services with a free plan.
+   - Additionally, the **free PostgreSQL database** offered on Railway had some limitations, such as limited storage and performance, making it difficult to scale as the project grows.
+
+3. **Fast.io**:
+   - I also explored **Fast.io**, but unfortunately, their deployment process encountered issues. During the middle of the deployment, the service failed and reverted back to the **initial state**, which caused a lot of frustration.
+   - The platform seems promising for simple deployments but did not work well for this project’s requirements.
+
+#### Summary:
+In conclusion, I opted for **Render** due to its **managed PostgreSQL support**, **ease of use**, and **seamless integration with GitHub**. While the absence of **cron jobs** in the free tier is a limitation, it is a tradeoff I made to keep costs low. If you’re considering a similar cloud provider for your own app, **Render** offers a good balance between simplicity and functionality for small-to-medium projects.
+
+
+
+## Postman Testing for API endpoints after deployment
+
+
+Here are the available API endpoints:
+
+1. **GET /outdated_page/{category_name}**  
+   Fetches the most outdated page for a given category.
+
+2. **GET /cached_outdated_page/{category_name}**  
+   Fetches cached data for an outdated page if available.
+
+3. **POST /query**  
+   Executes a `SELECT` SQL query on the database.
+
+---
+
+## Postman Tests
+
+I have created a **Postman collection** that includes the following tests for the API:
+
+### Test Cases:
+
+1. **Outdated Page Request**  
+   - Verifies that the `/outdated_page/{category_name}` endpoint correctly returns the most outdated page for a valid category.
+   - Expected Response: `200 OK` with the page details.
+
+2. **Cached Outdated Page Request**  
+   - Verifies that the `/cached_outdated_page/{category_name}` endpoint returns cached data (or a relevant message if no cache exists).
+   - Expected Response: `200 OK` with the cached data or a message indicating no cache.
+
+3. **Querying a Valid Table**  
+   - Verifies that querying a valid table (e.g., `SELECT COUNT(*) FROM pages`) returns the correct count of entries.
+   - Expected Response: `200 OK` with the correct result.
+
+4. **Querying an Invalid Table**  
+   - Verifies that querying a non-existent table - page instead of pages (e.g., `SELECT COUNT(*) FROM page`) triggers a **500 Internal Server Error** due to the lack of error handling for invalid queries.
+   - Expected Response: `500 Internal Server Error`.
+
+### Postman Collection Link:
+
+You can import the Postman collection from this link:  
+https://app.getpostman.com/join-team?invite_code=db51400d1ff78ef6ffae929c25bd44816b8b3ed9966c0badc83e54571bad7c29&target_code=fce0bbea7b93945ee4e31e35eb885a46
+
 
 
 # Wikipedia Assistant - Future Improvements
